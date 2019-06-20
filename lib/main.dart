@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: '豆瓣电影',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: '豆瓣电影'),
     );
@@ -47,7 +47,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _widgetItems[_selectedIndex],
+      body: SafeArea(
+        child: _widgetItems[_selectedIndex],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         // 底部items项
         items: [
