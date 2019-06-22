@@ -33,7 +33,47 @@ class _MoviesWidgetState extends State<MoviesWidget> {
               prefixIcon: Icon(Icons.search),
             ),
           ),
-        )
+        ),
+        Expanded(
+          flex: 1,
+          child: DefaultTabController(
+            length: 2,
+            initialIndex: 0,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  constraints: BoxConstraints.expand(height: 50.0),
+                  child: TabBar(
+                    unselectedLabelColor: Colors.black12,
+                    labelColor: Colors.black87,
+                    indicatorColor: Colors.black87,
+                    tabs: <Widget>[
+                      Tab(
+                        text: '电影',
+                      ),
+                      Tab(
+                        text: '电视',
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: TabBarView(
+                    children: <Widget>[
+                      Container(
+                        child: Text('电影'),
+                      ),
+                      Container(
+                        child: Text('电视'),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }
