@@ -56,7 +56,36 @@ class _HotWidgetState extends State<HotWidget> {
             initialIndex: 0,
             child: Column(
               children: <Widget>[
-                
+                Container(
+                  constraints: BoxConstraints.expand(height: 50.0),
+                  child: TabBar(
+                    unselectedLabelColor: Colors.black12,
+                    labelColor: Colors.black87,
+                    indicatorColor: Colors.black87,
+                    tabs: <Widget>[
+                      Tab(
+                        text: '正在热映',
+                      ),
+                      Tab(
+                        text: '即将上映',
+                      )
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    child: TabBarView(
+                      children: <Widget>[
+                        Center(
+                          child: Text('正在热映'),
+                        ),
+                        Center(
+                          child: Text('即将上映'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
