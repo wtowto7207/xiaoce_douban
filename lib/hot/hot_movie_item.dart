@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:xiaoce_douban/hot/hot_movie_data.dart';
 class HotMovieItem extends StatefulWidget {
   final HotMovieData hotMovieData;
   HotMovieItem(this.hotMovieData);
@@ -17,7 +17,7 @@ class _HotMovieItemState extends State<HotMovieItem> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Image.network(
-            widget.hotMovieData.images,
+            widget.hotMovieData.images.small,
             width: 80.0,
             height: 120.0,
             fit: BoxFit.cover,
@@ -39,25 +39,27 @@ class _HotMovieItemState extends State<HotMovieItem> {
                     ),
                   ),
                   Text(
-                    widget.hotMovieData.rating.toString(),
+                    widget.hotMovieData.rating.average.toString(),
                     style: TextStyle(
                       fontSize: 14.0,
                       color: Colors.black54,
                     ),
                   ),
                   Text(
-                    '导演：${widget.hotMovieData.directors}',
+                    '导演：${widget.hotMovieData.getDirectors()}',
                     style: TextStyle(
                       fontSize: 14.0,
                       color: Colors.black54,
                     ),
                   ),
                   Text(
-                    '演员：${widget.hotMovieData.casts}',
+                    '演员：${widget.hotMovieData.getCasts()}',
                     style: TextStyle(
                       fontSize: 14.0,
                       color: Colors.black54,
                     ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
@@ -69,7 +71,7 @@ class _HotMovieItemState extends State<HotMovieItem> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  '${widget.hotMovieData.watchedPeople.toString()}人看过',
+                  '${widget.hotMovieData.collectCount.toString()}人看过',
                   style: TextStyle(
                     fontSize: 14.0,
                     color: Colors.red,
@@ -97,21 +99,4 @@ class _HotMovieItemState extends State<HotMovieItem> {
       ),
     );
   }
-}
-class HotMovieData {
-  String title;
-  double rating;
-  String directors;
-  String casts;
-  int watchedPeople;
-  String images;
-
-  HotMovieData(
-    this.title,
-    this.rating,
-    this.directors,
-    this.casts,
-    this.watchedPeople,
-    this.images,
-  );
 }
