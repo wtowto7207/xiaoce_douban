@@ -10,8 +10,11 @@ class HotMovieList extends StatefulWidget {
   _HotMovieListState createState() => _HotMovieListState();
 }
 
-class _HotMovieListState extends State<HotMovieList> {
+class _HotMovieListState extends State<HotMovieList> with AutomaticKeepAliveClientMixin {
   List<HotMovieData> hotMovies = new List<HotMovieData>();
+  // mixin AutomaticKeppAliveClientMixin  设置wantKeepAlive为true,使其不回收不显示的Widget
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -24,18 +27,25 @@ class _HotMovieListState extends State<HotMovieList> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: hotMovies.length,
-      itemBuilder: (context, index) {
-        return HotMovieItem(hotMovies[index]);
-      },
-      separatorBuilder: (context, index) {
-        return Divider(
-          height: 1,
-          color: Colors.black26,
-        );
-      },
-    );
+    super.build(context);
+    if (hotMovies == null || hotMovies.isEmpty) {
+      return Center(
+        child: CircularProgressIndicator(),
+      );
+    } else {
+      return ListView.separated(
+        itemCount: hotMovies.length,
+        itemBuilder: (context, index) {
+          return HotMovieItem(hotMovies[index]);
+        },
+        separatorBuilder: (context, index) {
+          return Divider(
+            height: 1,
+            color: Colors.black26,
+          );
+        },
+      );
+    }
   }
 
 //通过http请求获取数据
