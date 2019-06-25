@@ -7,7 +7,7 @@ class HotWidget extends StatefulWidget {
 }
 
 class _HotWidgetState extends State<HotWidget> {
-  
+  String curCity = '湖州';
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -16,14 +16,19 @@ class _HotWidgetState extends State<HotWidget> {
         Container(
           height: 80.0,
           alignment: Alignment.center,
-          padding: EdgeInsets.only(left:20.0,right: 20.0),
+          padding: EdgeInsets.only(left: 20.0, right: 20.0),
           child: Row(
             children: <Widget>[
-              Text(
-                '湖州',
-                style: TextStyle(
-                  fontSize: 16.0,
+              GestureDetector(
+                child: Text(
+                  curCity,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                  ),
                 ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/Citys');
+                },
               ),
               Icon(Icons.arrow_drop_down),
               Expanded(
@@ -37,7 +42,7 @@ class _HotWidgetState extends State<HotWidget> {
                       fontSize: 16.0,
                       fontFamily: 'MaterialIcons',
                     ),
-                    contentPadding: EdgeInsets.only(top: 8.0,bottom: 8.0),
+                    contentPadding: EdgeInsets.only(top: 8.0, bottom: 8.0),
                     border: OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -78,7 +83,7 @@ class _HotWidgetState extends State<HotWidget> {
                   child: Container(
                     child: TabBarView(
                       children: <Widget>[
-                        HotMovieList(),
+                        HotMovieList(curCity),
                         Center(
                           child: Text('即将上映'),
                         ),
