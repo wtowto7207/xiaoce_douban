@@ -27,7 +27,7 @@ class _HotWidgetState extends State<HotWidget> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(context, '/Citys');
+                  Navigator.pushNamed(context, '/Citys',arguments: curCity );
                 },
               ),
               Icon(Icons.arrow_drop_down),
