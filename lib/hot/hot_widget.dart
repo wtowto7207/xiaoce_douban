@@ -7,7 +7,7 @@ class HotWidget extends StatefulWidget {
 }
 
 class _HotWidgetState extends State<HotWidget> {
-  String curCity = '湖州';
+  String curCity = '安吉';
   @override
   Widget build(BuildContext context) {
     return Column(

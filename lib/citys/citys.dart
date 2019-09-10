@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CitysWidget extends StatefulWidget {
+
   @override
   _CitysWidgetState createState() => _CitysWidgetState();
 }
@@ -24,6 +26,22 @@ class _CitysWidgetState extends State<CitysWidget> {
     '天津',
     '福州'
   ];
+
+  static const platformChannel = const MethodChannel('flutter.doubanmovie/toast');
+
+  void showToast(String content) async {
+    var arguments = Map();
+    arguments['content'] = content;
+    try {
+      String result = await platformChannel.invokeMethod('toast',arguments);
+      print('showToast$result');
+    } on PlatformException catch (e) {
+      print('showToast${e.code}${e.message}${e.details}');
+    } on MissingPluginException catch(e){
+      print('showToast${e.message}');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     curCity = ModalRoute.of(context).settings.arguments;
@@ -125,7 +143,9 @@ class _CitysWidgetState extends State<CitysWidget> {
                             ),
                             color: Colors.white,
                             elevation: 0.0,
-                            onPressed: () {},
+                            onPressed: () {
+                              showToast('hello');
+                            },
                           ),
                         ),
                         // 热门城市
