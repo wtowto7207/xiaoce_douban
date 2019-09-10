@@ -11,7 +11,7 @@ class _HotMovieItemState extends State<HotMovieItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 160.0,
+      height: 180.0,
       padding: EdgeInsets.all(20.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

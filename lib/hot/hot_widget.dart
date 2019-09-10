@@ -7,9 +7,6 @@ class HotWidget extends StatefulWidget {
 }
 
 class _HotWidgetState extends State<HotWidget> {
-<<<<<<< HEAD
-  String curCity = '安吉';
-=======
   String curCity = '湖州';
   void _jumpToCityWidget() async {
     var selectCity =
@@ -19,8 +16,6 @@ class _HotWidgetState extends State<HotWidget> {
       curCity = selectCity;
     });
   }
-
->>>>>>> defa7680b628dba41b187b88c1257b919effa693
   @override
   Widget build(BuildContext context) {
     return Column(
