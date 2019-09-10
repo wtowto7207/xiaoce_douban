@@ -178,8 +178,12 @@ class _CitysWidgetState extends State<CitysWidget> {
                                 return MaterialButton(
                                   color: Colors.white,
                                   elevation: 0,
-                                  child: Text(hotCitys[index]),
-                                  onPressed: () {},
+                                  child: Text(
+                                    hotCitys[index],
+                                  ),
+                                  onPressed: () {
+                                    Navigator.pop(context,hotCitys[index]);
+                                  },
                                 );
                               },
                             ),
